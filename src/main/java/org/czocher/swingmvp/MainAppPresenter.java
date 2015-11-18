@@ -2,10 +2,12 @@ package org.czocher.swingmvp;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import java.awt.Container;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import org.czocher.swingmvp.models.UserRepository;
+import org.czocher.swingmvp.presenters.Presenter;
 import org.czocher.swingmvp.presenters.impl.LoginPresenterImpl;
 import org.czocher.swingmvp.presenters.impl.WelcomePresenterImpl;
 import org.czocher.swingmvp.views.LoginView;
@@ -13,9 +15,9 @@ import org.czocher.swingmvp.views.WelcomeView;
 import org.czocher.swingmvp.views.impl.LoginViewImpl;
 import org.czocher.swingmvp.views.impl.WelcomeViewImpl;
 
-class AppController {
+class MainAppPresenter implements Presenter {
 
-    private static final Logger LOGGER = Logger.getLogger(AppController.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MainAppPresenter.class.getName());
     
     private final UserRepository userRepository;
     private final AppData appData;
@@ -25,7 +27,7 @@ class AppController {
     private LoginView loginView = LoginView.NULL;
     private WelcomeView welcomeView = WelcomeView.NULL;
 
-    AppController(EventBus eventBus) {
+    MainAppPresenter(EventBus eventBus) {
         this.eventBus = eventBus;
         
         frame = new JFrame();
@@ -47,7 +49,7 @@ class AppController {
                 if (loginView == LoginView.NULL) {
                     loginView = new LoginViewImpl();
                 }
-                new LoginPresenterImpl(loginView, userRepository).go(frame.getContentPane());
+                new LoginPresenterImpl(loginView, appData, userRepository).go(frame.getContentPane());
                 break;
             case WelcomeView.TAG:
                 if (welcomeView == WelcomeView.NULL) {
@@ -62,8 +64,9 @@ class AppController {
         frame.setVisible(true);
     }
 
-    void go() {
-        onViewChange(LoginView.TAG);
+    @Override
+    public void go(Container container) {
+        eventBus.post(LoginView.TAG);
     }
 
 }

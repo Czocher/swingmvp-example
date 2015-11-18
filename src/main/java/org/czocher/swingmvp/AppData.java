@@ -1,7 +1,6 @@
 package org.czocher.swingmvp;
 
 import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
 import org.czocher.swingmvp.models.User;
 
 public class AppData {
@@ -16,11 +15,6 @@ public class AppData {
 
     private void bind() {
         eventBus.register(this);
-    }
-
-    @Subscribe
-    public void onUserLoggin(User user) {
-        loggedInUser = user;
     }
 
     public User getLoggedInUser() {
