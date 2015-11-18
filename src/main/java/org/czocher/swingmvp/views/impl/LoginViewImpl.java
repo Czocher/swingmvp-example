@@ -17,7 +17,7 @@ public class LoginViewImpl extends JPanel implements LoginView {
     private JTextField usernameBox;
     private JPasswordField passwordBox;
     private JButton loginButton;
-    private LoginPresenter presenter;
+    private LoginPresenter presenter = LoginPresenter.NULL;
 
     public LoginViewImpl() {
         createWidgets();
