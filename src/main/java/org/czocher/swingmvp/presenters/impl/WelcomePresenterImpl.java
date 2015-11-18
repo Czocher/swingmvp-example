@@ -1,7 +1,7 @@
 package org.czocher.swingmvp.presenters.impl;
 
 import java.awt.Component;
-import javax.swing.JFrame;
+import java.awt.Container;
 import org.czocher.swingmvp.AppData;
 import org.czocher.swingmvp.presenters.WelcomePresenter;
 import org.czocher.swingmvp.views.WelcomeView;
@@ -21,8 +21,8 @@ public class WelcomePresenterImpl implements WelcomePresenter {
     }
 
     @Override
-    public void go(JFrame container) {
-        container.getContentPane().removeAll();
+    public void go(Container container) {
+        container.removeAll();
         container.add((Component) view);
     }
 

@@ -47,13 +47,13 @@ class AppController {
                 if (loginView == LoginView.NULL) {
                     loginView = new LoginViewImpl();
                 }
-                new LoginPresenterImpl(loginView, userRepository).go(frame);
+                new LoginPresenterImpl(loginView, userRepository).go(frame.getContentPane());
                 break;
             case WelcomeView.TAG:
                 if (welcomeView == WelcomeView.NULL) {
                     welcomeView = new WelcomeViewImpl();
                 }
-                new WelcomePresenterImpl(welcomeView, appData).go(frame);
+                new WelcomePresenterImpl(welcomeView, appData).go(frame.getContentPane());
                 break;
             default:
                 LOGGER.log(Level.WARNING, "Unknown view tag: {0}", newView);

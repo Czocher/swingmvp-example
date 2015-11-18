@@ -1,5 +1,6 @@
 package org.czocher.swingmvp.presenters;
 
+import java.awt.Container;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
@@ -9,12 +10,14 @@ public interface WelcomePresenter extends Presenter {
     public static WelcomePresenter NULL = new WelcomePresenter() {
 
         @Override
-        public void go(JFrame container) {
+        public void go(Container container) {
             log();
         }
 
         private void log() {
             LOGGER.severe("NULL object used!");
         }
+
+
     };
 }

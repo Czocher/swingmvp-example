@@ -1,9 +1,9 @@
 package org.czocher.swingmvp.presenters;
 
-import javax.swing.JFrame;
+import java.awt.Container;
 
 public interface Presenter {
     
-    void go(JFrame container);
+    void go(Container container);
     
 }

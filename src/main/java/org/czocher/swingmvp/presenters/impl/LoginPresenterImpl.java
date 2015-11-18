@@ -1,8 +1,8 @@
 package org.czocher.swingmvp.presenters.impl;
 
 import java.awt.Component;
+import java.awt.Container;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import org.czocher.swingmvp.EventBusSingleton;
 import org.czocher.swingmvp.models.User;
 import org.czocher.swingmvp.models.UserRepository;
@@ -35,7 +35,7 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
-    public void go(JFrame container) {
+    public void go(Container container) {
         container.add((Component) view);
     }
 
